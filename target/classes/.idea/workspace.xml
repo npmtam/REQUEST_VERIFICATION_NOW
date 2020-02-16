@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fdca5063-d4a3-4f98-92e6-0bc8b1d7146b" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XthI0JG0baPmDlzQkNmhUq1Izf" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Automation Projects\REQUEST_VERIFICATION_NOW\src\test\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pageUIs" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Automation Projects\REQUEST_VERIFICATION_NOW\src\main\resources" />
+      <recent name="D:\Automation Projects\REQUEST_VERIFICATION_NOW\src\main\java\pageObjects" />
+      <recent name="D:\Automation Projects\REQUEST_VERIFICATION_NOW\src\main\java\pageUIs" />
+      <recent name="D:\Automation Projects\REQUEST_VERIFICATION_NOW" />
+      <recent name="D:\Automation Projects\REQUEST_VERIFICATION_NOW\src\main\java" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="TestNG.D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/test/resources/runFETestcases.xml">
+    <configuration name="D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/main/resources/runFETestcases.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="REQUEST_VERIFICATION_NOW" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/runFETestcases.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/test/resources/runFETestcases.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="REQUEST_VERIFICATION_NOW" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/runFETestcases.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Request_verification_now" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="REQUEST_VERIFICATION_NOW" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="facebook.nowgroup.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="facebook.nowgroup" />
+      <option name="MAIN_CLASS_NAME" value="facebook.nowgroup.Request_verification_now" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/test/resources/runFETestcases.xml" />
+        <item itemvalue="TestNG.Request_verification_now" />
+        <item itemvalue="TestNG.D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/main/resources/runFETestcases.xml" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fdca5063-d4a3-4f98-92e6-0bc8b1d7146b" name="Default Changelist" comment="" />
+      <created>1581871214660</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581871214660</updated>
+    </task>
+    <servers />
+  </component>
+</project>
