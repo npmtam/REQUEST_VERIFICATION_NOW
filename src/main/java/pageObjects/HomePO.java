@@ -24,8 +24,13 @@ public class HomePO extends AbstractPage {
 	}
 	
 	public void clickToLoginButton() {
-		waitToElementVisible(HomePageUIs.LOGIN_BUTTON);
-		clickToElement(HomePageUIs.LOGIN_BUTTON);
+		if (isElementPresentInDOM(HomePageUIs.LOGIN_BUTTON)) {
+			waitToElementVisible(HomePageUIs.LOGIN_BUTTON);
+			clickToElement(HomePageUIs.LOGIN_BUTTON);
+		} else {
+			waitToElementClickable(HomePageUIs.LOGIN_BUTTON2);
+			clickToElement(HomePageUIs.LOGIN_BUTTON2);
+		}
 	}
 	
 	public void clickToGroupsLink() {

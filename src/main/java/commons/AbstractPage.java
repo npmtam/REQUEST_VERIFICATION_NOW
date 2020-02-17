@@ -143,6 +143,16 @@ public class AbstractPage {
 		jsExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
 	}
 
+	public void scrollToElement(WebElement element){
+        jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
+    }
+
+    public void scrollToBottomPage() {
+	    jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+    }
+
 	public void selectItemInCustomDropdown(String parentLocator, String allItemsLocator, String expectedItem) {
 		jsExecutor = (JavascriptExecutor) driver;
 		waitExplicit = new WebDriverWait(driver, longTimeout);

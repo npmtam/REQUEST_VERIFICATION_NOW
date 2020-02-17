@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fdca5063-d4a3-4f98-92e6-0bc8b1d7146b" name="Default Changelist" comment="" />
+    <list default="true" id="fdca5063-d4a3-4f98-92e6-0bc8b1d7146b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObjects/RequestPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/RequestPO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageUIs/RequestsPageUIs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageUIs/RequestsPageUIs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/facebook/nowgroup/Request_verification_now.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/facebook/nowgroup/Request_verification_now.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/runFETestcases.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/RunRequestVerificationTool.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pageObjects/RequestPO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pageObjects/RequestPO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pageUIs/RequestsPageUIs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pageUIs/RequestsPageUIs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/src/test/resources/runFETestcases.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/target/test-classes/runFETestcases.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/facebook/nowgroup/Request_verification_now.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/facebook/nowgroup/Request_verification_now.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/runFETestcases.xml" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +26,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XthI0JG0baPmDlzQkNmhUq1Izf" />
   <component name="PropertiesComponent">
@@ -50,10 +65,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/test/resources/runFETestcases.xml">
+  <component name="RunManager" selected="TestNG.D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/test/resources/RunRequestVerificationTool.xml">
     <configuration name="D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/main/resources/runFETestcases.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="REQUEST_VERIFICATION_NOW" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/runFETestcases.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/test/resources/RunRequestVerificationTool.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="REQUEST_VERIFICATION_NOW" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/RunRequestVerificationTool.xml" />
       <option name="TEST_OBJECT" value="SUITE" />
       <properties />
       <listeners />
@@ -90,6 +115,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/test/resources/RunRequestVerificationTool.xml" />
         <item itemvalue="TestNG.D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/test/resources/runFETestcases.xml" />
         <item itemvalue="TestNG.Request_verification_now" />
         <item itemvalue="TestNG.D:/Automation Projects/REQUEST_VERIFICATION_NOW/src/main/resources/runFETestcases.xml" />
@@ -108,5 +134,16 @@
       <updated>1581871214660</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

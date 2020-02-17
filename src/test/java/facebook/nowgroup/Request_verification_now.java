@@ -21,7 +21,7 @@ public class Request_verification_now extends AbstractTest {
     private LoginPO loginPage;
     private RequestPO requestPage;
 
-    String email, password;
+    String email, password, numberRequestNotAnswer, newestSort, oldestSort;
 
     @Parameters("browser")
     @BeforeTest
@@ -31,6 +31,8 @@ public class Request_verification_now extends AbstractTest {
         abstractPage = new AbstractPage(driver);
 
         email = "dizz.myluv@gmail.com";
+        newestSort = "Mới nhất trước";
+        oldestSort = "Cũ nhất trước";
         password = "m" + "ua" + "thu" + "19" + "93";
 
         log.info("Pre-condition: Login");
@@ -46,7 +48,7 @@ public class Request_verification_now extends AbstractTest {
     }
 
     @Test
-    public void accessGroupNow() {
+    public void TC01_AccessGroupNow() {
         log.info("Step 01: Click to Group link");
         homePage.clickToGroupsLink();
         abstractPage.sleepInSecond(2);
@@ -60,7 +62,7 @@ public class Request_verification_now extends AbstractTest {
     }
 
     @Test
-    public void accessRequestPage() {
+    public void TC02_AccessRequestPage() {
         log.info("Step 04: Access request Page");
         groupPage = PageGeneratorManager.getGroupPage(driver);
         groupPage.clickToMemberRequestLink();
@@ -70,22 +72,42 @@ public class Request_verification_now extends AbstractTest {
     }
 
     @Test
-    public void removeRequestDidNotAnswer() {
+    public void TC03_RemoveRequestDidNotAnswer() {
         log.info("Step 06: Select filter: Request didn't answer the question");
         requestPage = PageGeneratorManager.getRequestPage(driver);
         requestPage.clickToQuestionFilter();
         abstractPage.sleepInSecond(1);
         requestPage.clickToNoAnswerQuestionFilter();
 
-        log.info("Step 07: Remove all request didn't answer");
+        log.info("Step 07: Count the number of request not answer");
+        numberRequestNotAnswer = requestPage.getNumberOfRequestNotAnswer();
+        System.out.println("There are " + numberRequestNotAnswer + " requests that not answer the question");
+
+        log.info("Step 08: Remove all request didn't answer");
         requestPage.clickToDeclineAllRequest();
         requestPage.clickToConfirmButton();
 
-        log.info("Step 08: Verify declined didn't answer request");
-        requestPage.isRequestEquals(0);
+        log.info("Step 09: Verify declined didn't answer request");
+        verifyTrue(requestPage.isRequestEquals(0));
 
-        log.info("Step 09: Remove filter");
+        log.info("Step 10: Remove filter");
         requestPage.clickToRemoveFilter();
+
+        System.out.println("Rejected " + numberRequestNotAnswer + " that not answer the question");
+    }
+
+    @Test
+    public void TC04_SortByOldestFirst(){
+        log.info("Step 11: Select filter by oldest first");
+        requestPage.selectSortSubOptions(oldestSort);
+
+        log.info("Step 12: Verify the oldest was selected");
+        requestPage.isOldestSortWasSelected();
+
+        log.info("Step 13: Check and print ID requested");
+        requestPage.listAndCheckIDRequested();
+
+        abstractPage.sleepInSecond(5);
     }
 
     @AfterTest(alwaysRun = true)
