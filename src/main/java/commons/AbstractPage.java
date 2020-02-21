@@ -93,6 +93,17 @@ public class AbstractPage {
 		element.click();
 	}
 
+	public void clickToElementByJS(String locator) {
+		WebElement element = driver.findElement(By.xpath(locator));
+		jsExecutor.executeScript("arguments[0].click();", element);
+	}
+
+	public void clickToElementByJS(String locator, String attributeValue){
+		locator = String.format(locator, attributeValue);
+		element = driver.findElement(By.xpath(locator));
+		jsExecutor.executeScript("arguments[0].click();", element);
+	}
+
 	public void sendKeyToElement(String locator, String value) {
 		element = driver.findElement(By.xpath(locator));
 		element.clear();
@@ -524,5 +535,22 @@ public class AbstractPage {
 		return (long) jsExecutor.executeScript("return $(document.evaluate(\"//a[text()='"+productName+"']/parent::td\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue).index() +1;");
 	}
 
+	public void scrollToLoadMore(){
+		try {
+			long lastHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
 
+			while (true) {
+				((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+				Thread.sleep(2000);
+
+				long newHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+				if (newHeight == lastHeight) {
+					break;
+				}
+				lastHeight = newHeight;
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

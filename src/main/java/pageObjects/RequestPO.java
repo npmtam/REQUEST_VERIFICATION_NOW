@@ -77,8 +77,13 @@ public class RequestPO extends AbstractPage {
         return isElementPresentInDOM(RequestsPageUIs.OLDEST_OPTIONS_SELECTED);
     }
 
+    public void scrollToLoadID(){
+        scrollToLoadMore();
+        sleepInSecond(3);
+        scrollToElement(RequestsPageUIs.MENU_RULE_DROPDOWN);
+        sleepInSecond(1);
+    }
     public void listAndCheckIDRequested() {
-        scrollToBottomPage();
         List<WebElement> allID = driver.findElements(By.xpath(RequestsPageUIs.LIST_ID_INPUTTED));
         for (WebElement id : allID) {
             scrollToElement(id);
@@ -88,21 +93,21 @@ public class RequestPO extends AbstractPage {
             if (!Character.isDigit(requestID.charAt(requestID.length() - 1))) {
                 System.out.println("Decline ID: " + requestID + " - ID không đúng - Ký tự sau cùng");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-                clickToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
+                clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
             } else if (idSize > 8) {
                 System.out.println("WARNING: ID " + requestID + " is > 8 characters");
             } else if (idSize > 12) {
                 System.out.println("Decline ID: " + requestID + " due to > 12 characters");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-                clickToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
+                clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
             } else if(idSize < 6){
                 System.out.println("Decline ID: " +requestID+" due to < 6 characters");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-                clickToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
+                clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
             } else if (requestID.startsWith("0")){
                 System.out.println("Decline ID: " + requestID + "due to start with 0");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-                clickToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
+                clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
             }
         }
         System.out.println("=================================================================");

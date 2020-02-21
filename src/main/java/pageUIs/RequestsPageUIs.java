@@ -22,4 +22,5 @@ public class RequestsPageUIs {
     //List ID
     public static final String LIST_ID_INPUTTED = "//text[@truncate='200']";
     public static final String DECLINE_BUTTON_FOR_EACH_ID = "//text[@truncate='200' and contains(text(), '%s')]/ancestor::div[@class='_4wsr']/preceding-sibling::div[@class='_4wsp _51xa']/button[@name='decline']";
+    public static final String MENU_RULE_DROPDOWN = "//span[text()='Quy tắc']";
 }

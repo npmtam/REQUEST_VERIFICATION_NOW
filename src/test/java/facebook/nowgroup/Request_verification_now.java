@@ -104,6 +104,9 @@ public class Request_verification_now extends AbstractTest {
         log.info("Step 12: Verify the oldest was selected");
         requestPage.isOldestSortWasSelected();
 
+        log.info("Step 13: Scroll to load full requests");
+        requestPage.scrollToLoadID();
+
         log.info("Step 13: Check and print ID requested");
         requestPage.listAndCheckIDRequested();
 
