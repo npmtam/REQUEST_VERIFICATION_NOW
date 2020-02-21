@@ -110,7 +110,7 @@ public class Request_verification_now extends AbstractTest {
         log.info("Step 13: Check and print ID requested");
         requestPage.listAndCheckIDRequested();
 
-        abstractPage.sleepInSecond(5);
+        abstractPage.sleepInSecond(30);
     }
 
     @AfterTest(alwaysRun = true)
