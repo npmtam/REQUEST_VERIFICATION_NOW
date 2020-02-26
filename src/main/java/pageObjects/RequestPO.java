@@ -1,8 +1,6 @@
 package pageObjects;
 
-import com.google.inject.Key;
-import com.google.inject.internal.cglib.core.$AbstractClassGenerator;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import commons.ReadDataExcel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,10 +11,13 @@ import org.openqa.selenium.interactions.Actions;
 import pageUIs.RequestsPageUIs;
 import sun.misc.Request;
 
+import java.io.IOException;
 import java.util.List;
 
 public class RequestPO extends AbstractPage {
     WebDriver driver;
+
+
 
     public RequestPO(WebDriver driver) {
         super(driver);
@@ -50,9 +51,17 @@ public class RequestPO extends AbstractPage {
     }
 
     public String getNumberOfRequestNotAnswer() {
-        String countRequestLabel = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL);
-        String numberOfRequest = countRequestLabel.substring(0, 3);
-        return numberOfRequest;
+        if (isElementPresentInDOM(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL)) {
+            String countRequestLabel = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL);
+            String numberOfRequest = countRequestLabel.substring(0, 3);
+            return numberOfRequest;
+        }
+        else {
+            String countRequestLabel = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL_BACKUP);
+            String numberOfRequest = countRequestLabel.substring(0, 3);
+            return numberOfRequest;
+        }
+
     }
 
     public void clickToRemoveFilter() {
@@ -100,7 +109,7 @@ public class RequestPO extends AbstractPage {
                 System.out.println("Decline ID: " + requestID + " due to > 12 characters");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-            } else if(idSize < 6){
+            } else if(idSize <= 6){
                 System.out.println("Decline ID: " +requestID+" due to < 6 characters");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
@@ -117,5 +126,22 @@ public class RequestPO extends AbstractPage {
         Actions action = new Actions(driver);
         action.keyDown(Keys.END).keyUp(Keys.END).perform();
     }
+
+    //DATA DRIVEN FROM EXCEL FILE
+    public void readDataFromExcel() {
+        //Create an object of ReadDataExcel class
+        ReadDataExcel objectExcelFile = new ReadDataExcel();
+
+        //Prepare the path of excel file
+        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources";
+
+        //Call read file method of the class to read data
+        try {
+            objectExcelFile.readExcel(filePath, "ShipperID.xlsx", "Sheet1");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

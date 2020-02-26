@@ -12,6 +12,7 @@ public class RequestsPageUIs {
 
 	//Member didn't answer
 	public static final String NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL = "//span[contains(text(), 'yêu cầu khớp')]";
+	public static final String NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL_BACKUP = "//span[contains(text(), 'yêu cầu trùng khớp')]";
 	public static final String REQUEST_PRESENT = "//a[@class='_z_3']";
 
 	//Sort request

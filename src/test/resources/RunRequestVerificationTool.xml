@@ -9,4 +9,11 @@
 		</classes>
 	</test>
 
+	<test name="RUN ON FIREFOX UI">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<!--<class name="facebook.nowgroup.Request_verification_now" />-->
+		</classes>
+	</test>
+
 </suite> <!-- Suite -->

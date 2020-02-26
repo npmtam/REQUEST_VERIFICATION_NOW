@@ -21,7 +21,7 @@ public class Request_verification_now extends AbstractTest {
     private LoginPO loginPage;
     private RequestPO requestPage;
 
-    String email, password, numberRequestNotAnswer, newestSort, oldestSort;
+    String email, password, numberRequestNotAnswer, newestSort, oldestSort, appURL, spreadsheetId, range, userName, passWord;
 
     @Parameters("browser")
     @BeforeTest
@@ -107,10 +107,11 @@ public class Request_verification_now extends AbstractTest {
         log.info("Step 13: Scroll to load full requests");
         requestPage.scrollToLoadID();
 
-        log.info("Step 13: Check and print ID requested");
+        log.info("Step 13: Check conditions and print ID requested");
         requestPage.listAndCheckIDRequested();
 
-        abstractPage.sleepInSecond(30);
+        requestPage.readDataFromExcel();
+
     }
 
     @AfterTest(alwaysRun = true)

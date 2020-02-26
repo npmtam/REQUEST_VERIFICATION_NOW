@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 public class AbstractTest {
@@ -45,6 +46,10 @@ public class AbstractTest {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions chromeOptions = new ChromeOptions();
 				chromeOptions.addArguments("--disable-notifications");
+//				chromeOptions.addArguments("--remote-debugging-port=9222");
+				chromeOptions.setExperimentalOption("useAutomationExtension", false);
+				chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+//				chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 				driver = new ChromeDriver(chromeOptions);
 				break;
 			case "chrome_headless":
