@@ -110,7 +110,7 @@ public class Request_verification_now extends AbstractTest {
         log.info("Step 13: Check conditions and print ID requested");
         requestPage.listAndCheckIDRequested();
 
-        requestPage.readDataFromExcel();
+//        requestPage.readDataFromExcel();
 
     }
 

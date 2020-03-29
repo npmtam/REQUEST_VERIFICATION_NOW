@@ -9,7 +9,6 @@ import commons.AbstractPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pageUIs.RequestsPageUIs;
-import sun.misc.Request;
 
 import java.io.IOException;
 import java.util.List;
@@ -89,7 +88,7 @@ public class RequestPO extends AbstractPage {
     public void scrollToLoadID(){
         scrollToLoadMore();
         sleepInSecond(3);
-        scrollToElement(RequestsPageUIs.MENU_RULE_DROPDOWN);
+        scrollToElement(RequestsPageUIs.REQUESTS_TEXT);
         sleepInSecond(1);
     }
     public void listAndCheckIDRequested() {
