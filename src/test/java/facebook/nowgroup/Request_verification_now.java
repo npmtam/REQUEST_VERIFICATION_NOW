@@ -33,7 +33,7 @@ public class Request_verification_now extends AbstractTest {
         email = "dizz.myluv@gmail.com";
         newestSort = "Mới nhất trước";
         oldestSort = "Cũ nhất trước";
-        password = "m" + "ua" + "thu" + "19" + "93";
+        password = "";
 
         log.info("Pre-condition: Login");
         homePage = PageGeneratorManager.getHomePage(driver);
