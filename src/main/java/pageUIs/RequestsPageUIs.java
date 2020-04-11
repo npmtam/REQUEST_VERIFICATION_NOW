@@ -22,6 +22,7 @@ public class RequestsPageUIs {
 
     //List ID
     public static final String LIST_ID_INPUTTED = "//text[@truncate='200']";
-    public static final String DECLINE_BUTTON_FOR_EACH_ID = "//text[@truncate='200' and contains(text(), '%s')]/ancestor::div[@class='_4wsr']/preceding-sibling::div[@class='_4wsp _51xa']/button[@name='decline']";
+    public static final String DECLINE_BUTTON_FOR_EACH_ID = "//text[contains(text(), '%s')]/ancestor::div[@class='_42ef']//button[@name='approve']";
+    public static final String APPROVE_BUTTON_FOR_EACH_ID = "//text[contains(text(), '%s')]/ancestor::div[@class='_42ef']//button[@name='decline']";
     public static final String REQUESTS_TEXT = "//div[@class='_7ghg']/span[text()='Yêu cầu tham gia']";
 }

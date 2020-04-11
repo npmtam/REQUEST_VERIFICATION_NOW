@@ -1,8 +1,6 @@
 package facebook.nowgroup;
 
-import commons.AbstractPage;
-import commons.AbstractTest;
-import commons.PageGeneratorManager;
+import commons.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,26 +17,23 @@ public class Request_verification_now extends AbstractTest {
     private HomePO homePage;
     private GroupPO groupPage;
     private LoginPO loginPage;
+    private ReadData readData;
     private RequestPO requestPage;
 
-    String email, password, numberRequestNotAnswer, newestSort, oldestSort, appURL, spreadsheetId, range, userName, passWord;
+    String numberRequestNotAnswer;
 
     @Parameters("browser")
     @BeforeTest
     public void beforeTest(String browserName) {
         driver = getBrowserDriver(browserName);
-        driver.get("https://www.facebook.com/");
+        driver.get(Constants.URL);
         abstractPage = new AbstractPage(driver);
-
-        email = "dizz.myluv@gmail.com";
-        newestSort = "Mới nhất trước";
-        oldestSort = "Cũ nhất trước";
-        password = "";
+        readData = new ReadData(driver);
 
         log.info("Pre-condition: Login");
         homePage = PageGeneratorManager.getHomePage(driver);
-        homePage.inputToEmailTextbox(email);
-        homePage.inputToPasswordTextbox(password);
+        homePage.inputToEmailTextbox(Constants.EMAIL);
+        homePage.inputToPasswordTextbox(Constants.PASSWORD);
 
         homePage.clickToLoginButton();
         abstractPage.sleepInSecond(1);
@@ -65,7 +60,8 @@ public class Request_verification_now extends AbstractTest {
     public void TC02_AccessRequestPage() {
         log.info("Step 04: Access request Page");
         groupPage = PageGeneratorManager.getGroupPage(driver);
-        groupPage.clickToMemberRequestLink();
+        groupPage.clickToGroupManagementLink();
+        groupPage.clickToRequestLink();
 
         log.info("Step 05: Verify access request page successfully");
         verifyTrue(groupPage.isRequestPageAccessed());
@@ -99,7 +95,7 @@ public class Request_verification_now extends AbstractTest {
     @Test
     public void TC04_SortByOldestFirst(){
         log.info("Step 11: Select filter by oldest first");
-        requestPage.selectSortSubOptions(oldestSort);
+        requestPage.selectSortSubOptions(Constants.LATEST_SORT);
 
         log.info("Step 12: Verify the oldest was selected");
         requestPage.isOldestSortWasSelected();
@@ -110,7 +106,8 @@ public class Request_verification_now extends AbstractTest {
         log.info("Step 13: Check conditions and print ID requested");
         requestPage.listAndCheckIDRequested();
 
-//        requestPage.readDataFromExcel();
+        log.info("Step 14: Read data from csv file");
+        readData.readData();
 
     }
 

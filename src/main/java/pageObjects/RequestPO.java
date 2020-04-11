@@ -1,6 +1,8 @@
 package pageObjects;
 
+import commons.Constants;
 import commons.ReadDataExcel;
+import org.apache.poi.util.SystemOutLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +17,6 @@ import java.util.List;
 
 public class RequestPO extends AbstractPage {
     WebDriver driver;
-
 
 
     public RequestPO(WebDriver driver) {
@@ -34,9 +35,12 @@ public class RequestPO extends AbstractPage {
     }
 
     public void clickToDeclineAllRequest() {
-        if (isElementPresentInDOM(RequestsPageUIs.DECLINE_ALL)) {
-            waitToElementClickable(RequestsPageUIs.DECLINE_ALL);
-            clickToElement(RequestsPageUIs.DECLINE_ALL);
+        String text = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL);
+        if (!text.startsWith("0")) {
+            if (isElementPresentInDOM(RequestsPageUIs.DECLINE_ALL)) {
+                waitToElementClickable(RequestsPageUIs.DECLINE_ALL);
+                clickToElement(RequestsPageUIs.DECLINE_ALL);
+            }
         } else {
             System.out.println("There's no request without answer");
         }
@@ -54,8 +58,7 @@ public class RequestPO extends AbstractPage {
             String countRequestLabel = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL);
             String numberOfRequest = countRequestLabel.substring(0, 3);
             return numberOfRequest;
-        }
-        else {
+        } else {
             String countRequestLabel = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL_BACKUP);
             String numberOfRequest = countRequestLabel.substring(0, 3);
             return numberOfRequest;
@@ -85,12 +88,13 @@ public class RequestPO extends AbstractPage {
         return isElementPresentInDOM(RequestsPageUIs.OLDEST_OPTIONS_SELECTED);
     }
 
-    public void scrollToLoadID(){
+    public void scrollToLoadID() {
         scrollToLoadMore();
         sleepInSecond(3);
         scrollToElement(RequestsPageUIs.REQUESTS_TEXT);
         sleepInSecond(1);
     }
+
     public void listAndCheckIDRequested() {
         List<WebElement> allID = driver.findElements(By.xpath(RequestsPageUIs.LIST_ID_INPUTTED));
         for (WebElement id : allID) {
@@ -99,48 +103,70 @@ public class RequestPO extends AbstractPage {
             System.out.println(requestID);
             int idSize = requestID.length();
             if (!Character.isDigit(requestID.charAt(requestID.length() - 1))) {
+                System.out.println("-----------------------------------------------------------------");
                 System.out.println("Decline ID: " + requestID + " - ID không đúng - Ký tự sau cùng");
+                System.out.println("-----------------------------------------------------------------");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
             } else if (idSize > 8) {
+                System.out.println("-----------------------------------------------------------------");
                 System.out.println("WARNING: ID " + requestID + " is > 8 characters");
+                System.out.println("-----------------------------------------------------------------");
             } else if (idSize > 12) {
+                System.out.println("-----------------------------------------------------------------");
                 System.out.println("Decline ID: " + requestID + " due to > 12 characters");
+                System.out.println("-----------------------------------------------------------------");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-            } else if(idSize <= 6){
-                System.out.println("Decline ID: " +requestID+" due to < 6 characters");
+            } else if (idSize <= 6) {
+                System.out.println("-----------------------------------------------------------------");
+                System.out.println("Decline ID: " + requestID + " due to < 6 characters");
+                System.out.println("-----------------------------------------------------------------");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-            } else if (requestID.startsWith("0")){
+            } else if (requestID.startsWith("0")) {
+                System.out.println("-----------------------------------------------------------------");
                 System.out.println("Decline ID: " + requestID + "due to start with 0");
+                System.out.println("-----------------------------------------------------------------");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
             }
         }
-        System.out.println("=================================================================");
+//        System.out.println("=================================================================");
     }
 
-    public void pressEndKeyboard(){
+    public void pressEndKeyboard() {
         Actions action = new Actions(driver);
         action.keyDown(Keys.END).keyUp(Keys.END).perform();
     }
 
-    //DATA DRIVEN FROM EXCEL FILE
-    public void readDataFromExcel() {
-        //Create an object of ReadDataExcel class
-        ReadDataExcel objectExcelFile = new ReadDataExcel();
+    public void readAndHandleData(List<String> id) {
+        for (String requestID : id) {
+            Constants.REQUEST_ID = id.get(0);
+            Constants.STATUS = id.get(1);
 
-        //Prepare the path of excel file
-        String filePath = System.getProperty("user.dir") + "\\src\\main\\resources";
-
-        //Call read file method of the class to read data
-        try {
-            objectExcelFile.readExcel(filePath, "ShipperID.xlsx", "Sheet1");
-        } catch (IOException e) {
-            e.printStackTrace();
+            scrollToElement(RequestsPageUIs.REQUESTS_TEXT);
+            if (Constants.STATUS.equals("OK")) {
+                if (isElementPresentInDOM(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID)) {
+                    scrollToElement(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
+                    sleepInSecond(1);
+                    waitToElementClickable(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
+                    clickToElement(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
+                    System.out.println("---- Approve ID: " + Constants.REQUEST_ID);
+                } else {
+                    System.out.println("---- The ID " + Constants.REQUEST_ID + " is not presented ----          ||");
+                }
+            } else if (Constants.STATUS.equals("DECLINE") || Constants.STATUS.equals("DUPLICATED")) {
+                if (isElementPresentInDOM(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID)) {
+                    scrollToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
+                    sleepInSecond(1);
+                    waitToElementClickable(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
+                    clickToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
+                    System.out.println("---- Decline ID: " + Constants.REQUEST_ID);
+                } else {
+                    System.out.println("---- The ID " + Constants.REQUEST_ID + " is not presented ----          ||");
+                }
+            }
         }
     }
-
-
 }

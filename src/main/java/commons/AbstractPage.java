@@ -154,6 +154,13 @@ public class AbstractPage {
 		jsExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
 	}
 
+	public void scrollToElement(String locator, String value) {
+		locator = String.format(locator, value);
+		element = driver.findElement(By.xpath(locator));
+		jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
+	}
+
 	public void scrollToElement(WebElement element){
         jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
@@ -352,7 +359,13 @@ public class AbstractPage {
 		by = By.xpath(locator);
 		waitExplicit = new WebDriverWait(driver, longTimeout);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(by));
+	}
 
+	public void waitToElementClickable(String locator, String value) {
+		locator = String.format(locator, value);
+		by = By.xpath(locator);
+		waitExplicit = new WebDriverWait(driver, longTimeout);
+		waitExplicit.until(ExpectedConditions.elementToBeClickable(by));
 	}
 
 	public boolean isElementEquals(String locator, String expectedResult) {
@@ -400,6 +413,18 @@ public class AbstractPage {
 	}
 
 	public boolean isElementPresentInDOM(String locator) {
+		overideGlobalTimeout(shortTimeout);
+		elements = driver.findElements(By.xpath(locator));
+		overideGlobalTimeout(longTimeout);
+		if (elements.size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isElementPresentInDOM(String locator, String value) {
+		locator = String.format(locator, value);
 		overideGlobalTimeout(shortTimeout);
 		elements = driver.findElements(By.xpath(locator));
 		overideGlobalTimeout(longTimeout);
