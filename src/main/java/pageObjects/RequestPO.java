@@ -1,8 +1,6 @@
 package pageObjects;
 
 import commons.Constants;
-import commons.ReadDataExcel;
-import org.apache.poi.util.SystemOutLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pageUIs.RequestsPageUIs;
 
-import java.io.IOException;
 import java.util.List;
 
 public class RequestPO extends AbstractPage {
