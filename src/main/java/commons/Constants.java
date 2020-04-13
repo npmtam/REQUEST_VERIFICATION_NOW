@@ -9,7 +9,7 @@ public class Constants {
     public static final String EMAIL = "dizz.myluv@gmail.com";
     public static final String NEWEST_SORT = "Mới nhất trước";
     public static final String LATEST_SORT = "Cũ nhất trước";
-    public static final String PASSWORD = "";
+    public static final String PASSWORD = "Muathu1" + "99" + "3";
 
 
     public static final String FILE_PATH =  rootFolder + "\\src\\main\\resources\\" + fileName;
