@@ -32,7 +32,7 @@ public class RequestPO extends AbstractPage {
     }
 
     public void clickToDeclineAllRequest() {
-        String text = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL);
+        String text = getNumberOfRequestNotAnswer();
         if (!text.startsWith("0")) {
             if (isElementPresentInDOM(RequestsPageUIs.DECLINE_ALL)) {
                 waitToElementClickable(RequestsPageUIs.DECLINE_ALL);
@@ -92,7 +92,8 @@ public class RequestPO extends AbstractPage {
         sleepInSecond(1);
     }
 
-    public void listAndCheckIDRequested() {
+    public void
+    listAndCheckIDRequested() {
         List<WebElement> allID = driver.findElements(By.xpath(RequestsPageUIs.LIST_ID_INPUTTED));
         for (WebElement id : allID) {
             scrollToElement(id);
@@ -141,7 +142,7 @@ public class RequestPO extends AbstractPage {
         for (String requestID : id) {
             Constants.REQUEST_ID = id.get(0);
             Constants.STATUS = id.get(1);
-
+            driver.get(Constants.URL);
             scrollToElement(RequestsPageUIs.REQUESTS_TEXT);
             if (Constants.STATUS.equals("OK")) {
                 if (isElementPresentInDOM(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID)) {

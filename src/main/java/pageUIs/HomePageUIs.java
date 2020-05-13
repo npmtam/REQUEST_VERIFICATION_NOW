@@ -1,7 +1,7 @@
 package pageUIs;
 
 public class HomePageUIs {
-    public static final String HOME_TITLE = "//a[text()='Trang chủ']";
+    public static final String HOME_TITLE = "//a[text()='Home']";
 	public static final String EMAIL_TEXTBOX = "//input[@id='email']";
 	public static final String PASSWORD_TEXTBOX = "//input[@id='pass']";
 	public static final String LOGIN_BUTTON = "//label[@id='loginbutton']/input";

@@ -63,6 +63,8 @@ public class Request_verification_now extends AbstractTest {
         groupPage.clickToGroupManagementLink();
         groupPage.clickToRequestLink();
 
+        groupPage.sleepInSecond(3);
+
         log.info("Step 05: Verify access request page successfully");
         verifyTrue(groupPage.isRequestPageAccessed());
     }
