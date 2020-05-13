@@ -15,8 +15,13 @@ public class Constants {
 
     public static final String FILE_PATH =  rootFolder + "\\src\\main\\resources\\" + fileName;
     public static final String COMMA_DELIMITER = ",";
+    public static final String NEW_LINE_SEPARATOR = "\n";
 
     public static String REQUEST_ID = null;
     public static String STATUS = null;
+
+    public static final String DECLINE = "DECLINE";
+    public static final String NEED_CONFIRMATION = "Need Confirmation";
+
 
 }

@@ -108,8 +108,8 @@ public class Request_verification_now extends AbstractTest {
         log.info("Step 13: Check conditions and print ID requested");
         requestPage.listAndCheckIDRequested();
 
-        log.info("Step 14: Read data from csv file");
-        readData.readData();
+        log.info("Step 14: Write ID to CSV file");
+
 
     }
 

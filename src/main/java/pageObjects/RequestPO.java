@@ -1,6 +1,7 @@
 package pageObjects;
 
 import commons.Constants;
+import commons.IDRequested;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +11,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pageUIs.RequestsPageUIs;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RequestPO extends AbstractPage {
     WebDriver driver;
+    String rootFolder = System.getProperty("user.dir");
+    String filePath = rootFolder + "/src/test/resources/ShipperID.csv";
+    String requestID, statusChecked;
 
 
     public RequestPO(WebDriver driver) {
@@ -97,7 +104,8 @@ public class RequestPO extends AbstractPage {
         List<WebElement> allID = driver.findElements(By.xpath(RequestsPageUIs.LIST_ID_INPUTTED));
         for (WebElement id : allID) {
             scrollToElement(id);
-            String requestID = id.getText();
+            requestID = id.getText();
+            writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
             System.out.println(requestID);
             int idSize = requestID.length();
             if (!Character.isDigit(requestID.charAt(requestID.length() - 1))) {
@@ -110,6 +118,7 @@ public class RequestPO extends AbstractPage {
                 System.out.println("-----------------------------------------------------------------");
                 System.out.println("WARNING: ID " + requestID + " is > 8 characters");
                 System.out.println("-----------------------------------------------------------------");
+                writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
             } else if (idSize > 12) {
                 System.out.println("-----------------------------------------------------------------");
                 System.out.println("Decline ID: " + requestID + " due to > 12 characters");
@@ -164,6 +173,36 @@ public class RequestPO extends AbstractPage {
                 } else {
                     System.out.println("---- The ID " + Constants.REQUEST_ID + " is not presented ----          ||");
                 }
+            }
+        }
+    }
+
+    public void writeDataToCsv(String idRequest, String status){
+        //Create new data object
+        IDRequested data = new IDRequested(idRequest, status);
+
+        List<IDRequested> idRequestList = new ArrayList<>();
+        idRequestList.add(data);
+
+        FileWriter fileWriter = null;
+        try{
+            fileWriter = new FileWriter(filePath, true);
+            for (IDRequested id : idRequestList){
+                fileWriter.append(id.getId());
+                fileWriter.append(Constants.COMMA_DELIMITER);
+                fileWriter.append(id.getStatus());
+            }
+            fileWriter.append(Constants.NEW_LINE_SEPARATOR);
+        } catch (Exception e){
+            System.out.println("Error in CSVFileWriter");
+            e.printStackTrace();
+        } finally {
+            try{
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException e){
+                System.out.println("Error while flushing/closing fileWriter");
+                e.printStackTrace();
             }
         }
     }
