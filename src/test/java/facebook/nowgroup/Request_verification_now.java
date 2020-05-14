@@ -28,7 +28,7 @@ public class Request_verification_now extends AbstractTest {
         driver = getBrowserDriver(browserName);
         driver.get(Constants.URL);
         abstractPage = new AbstractPage(driver);
-        readData = new ReadData(driver);
+        readData = new ReadData();
 
         log.info("Pre-condition: Login");
         homePage = PageGeneratorManager.getHomePage(driver);
@@ -108,9 +108,8 @@ public class Request_verification_now extends AbstractTest {
         log.info("Step 13: Check conditions and print ID requested");
         requestPage.listAndCheckIDRequested();
 
-        log.info("Step 14: Write ID to CSV file");
-
-
+        log.info("Step 14: Read data and verify");
+        requestPage.readAndHandleRequestID();
     }
 
     @AfterTest(alwaysRun = true)

@@ -28,6 +28,7 @@ public class GroupPO extends AbstractPage{
 	}
 
 	public boolean isRequestPageAccessed(){
+		sleepInSecond(2);
 		String currentUrl = driver.getCurrentUrl();
 		return currentUrl.contains("822546994752924/requests");
 	}

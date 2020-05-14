@@ -1,184 +1,102 @@
-12818128,Need Confirmation
-12558378,Need Confirmation
-10566453,Need Confirmation
-12073728,Need Confirmation
-9820752,Need Confirmation
-14958688,Need Confirmation
-12004011,Need Confirmation
-14991180,Need Confirmation
-14532035,Need Confirmation
-14531968,Need Confirmation
-15060097,Need Confirmation
-13034803,Need Confirmation
-14329448,Need Confirmation
-12438450,Need Confirmation
-14810776,Need Confirmation
-14810727,Need Confirmation
-4763233,Need Confirmation
-14932856,Need Confirmation
-14250861,Need Confirmation
-11804939,Need Confirmation
-6491138,Need Confirmation
-id 6642022,Need Confirmation
-id 6642022,Need Confirmation
-9723473,Need Confirmation
-12847829,Need Confirmation
-12271070,Need Confirmation
-1447516,Need Confirmation
-12930760,Need Confirmation
-8024501,Need Confirmation
-12399782,Need Confirmation
-17459194,Need Confirmation
-1902876,Need Confirmation
-14554710,Need Confirmation
-12963053,Need Confirmation
-7102090,Need Confirmation
-13035171,Need Confirmation
-13208175,Need Confirmation
-10101894,Need Confirmation
-15021706,Need Confirmation
-15127710,Need Confirmation
-8504300,Need Confirmation
-5789988,Need Confirmation
-15023078,Need Confirmation
-12718850,Need Confirmation
-14091197,Need Confirmation
-13113683,Need Confirmation
-14562149,Need Confirmation
-12558513,Need Confirmation
-15127986,Need Confirmation
-15147744,Need Confirmation
-14394061,Need Confirmation
-15147781,Need Confirmation
-15149262,Need Confirmation
-97543145,Need Confirmation
-15149391,Need Confirmation
-12191057,Need Confirmation
-10587260,Need Confirmation
-15149348,Need Confirmation
-8823743,Need Confirmation
-1,Need Confirmation
-1,DECLINE
-10164741,Need Confirmation
-12847624,Need Confirmation
-13994897,Need Confirmation
-1658865,Need Confirmation
-1033601,Need Confirmation
-12070770,Need Confirmation
-10322835,Need Confirmation
-14394296,Need Confirmation
-4419366,Need Confirmation
-14250948,Need Confirmation
-14760539,Need Confirmation
-15158330,Need Confirmation
-12004658,Need Confirmation
-12961915,Need Confirmation
-10414840,Need Confirmation
-Mã id 11127536,Need Confirmation
-Mã id 11127536,Need Confirmation
-14329776,Need Confirmation
-15129036,Need Confirmation
-4913301,Need Confirmation
-11805914,Need Confirmation
-A,Need Confirmation
-A,DECLINE
-9021798,Need Confirmation
-595975,Need Confirmation
-595975,DECLINE
-11805252,Need Confirmation
-13113296,Need Confirmation
-chưa chạy,Need Confirmation
-chưa chạy,DECLINE
-14394096,Need Confirmation
-14810376,Need Confirmation
-tự do,Need Confirmation
-tự do,DECLINE
-11720655,Need Confirmation
-2764797,Need Confirmation
-12558378,Need Confirmation
-10566453,Need Confirmation
-12073728,Need Confirmation
-9820752,Need Confirmation
-14958688,Need Confirmation
-12004011,Need Confirmation
-14991180,Need Confirmation
-14532035,Need Confirmation
-14531968,Need Confirmation
-15060097,Need Confirmation
-13034803,Need Confirmation
-14329448,Need Confirmation
-12438450,Need Confirmation
-14810776,Need Confirmation
-14810727,Need Confirmation
-4763233,Need Confirmation
-14932856,Need Confirmation
-14250861,Need Confirmation
-11804939,Need Confirmation
-6491138,Need Confirmation
-id 6642022,Need Confirmation
-id 6642022,Need Confirmation
-9723473,Need Confirmation
-12847829,Need Confirmation
-12271070,Need Confirmation
-1447516,Need Confirmation
-12930760,Need Confirmation
-8024501,Need Confirmation
-12399782,Need Confirmation
-17459194,Need Confirmation
-1902876,Need Confirmation
-14554710,Need Confirmation
-12963053,Need Confirmation
-7102090,Need Confirmation
-13035171,Need Confirmation
-13208175,Need Confirmation
-10101894,Need Confirmation
-15021706,Need Confirmation
-15127710,Need Confirmation
-8504300,Need Confirmation
-5789988,Need Confirmation
-15023078,Need Confirmation
-12718850,Need Confirmation
-14091197,Need Confirmation
-13113683,Need Confirmation
-14562149,Need Confirmation
-12558513,Need Confirmation
-15127986,Need Confirmation
-15147744,Need Confirmation
-14394061,Need Confirmation
-15147781,Need Confirmation
-15149262,Need Confirmation
-97543145,Need Confirmation
-15149391,Need Confirmation
-12191057,Need Confirmation
-10587260,Need Confirmation
-15149348,Need Confirmation
-8823743,Need Confirmation
-1,Need Confirmation
-10164741,Need Confirmation
-12847624,Need Confirmation
-13994897,Need Confirmation
-1658865,Need Confirmation
-1033601,Need Confirmation
-12070770,Need Confirmation
-10322835,Need Confirmation
-14394296,Need Confirmation
-4419366,Need Confirmation
-14250948,Need Confirmation
-14760539,Need Confirmation
-15158330,Need Confirmation
-12004658,Need Confirmation
-12961915,Need Confirmation
-10414840,Need Confirmation
-Mã id 11127536,Need Confirmation
-Mã id 11127536,Need Confirmation
-14329776,Need Confirmation
-15129036,Need Confirmation
-4913301,Need Confirmation
-11805914,Need Confirmation
-9021798,Need Confirmation
-11805252,Need Confirmation
-13113296,Need Confirmation
-14394096,Need Confirmation
-14810376,Need Confirmation
-11720655,Need Confirmation
-2764797,Need Confirmation
+ID,"Confirm ",Comments
+12743158,DECLINE,
+12818128,OK,
+12558378,DECLINE,
+14894117,OK,
+10566453,DECLINE,
+14250948,OK,
+12073728,DECLINE,
+9820752,DECLINE,
+14958688,OK,
+14940115,OK,
+12004011,OK,
+14991180,DECLINE,
+14532035,OK,
+14531968,OK,
+15060097,OK,
+13034803,DUPLICATED,
+11127536,OK,
+14329448,OK,
+12438450,OK,
+14810776,OK,
+2638366182,DECLINE,
+14810727,OK,
+4763233,DECLINE,
+14932856,OK,
+14250861,OK,
+11804939,OK,
+6491138,DECLINE,
+11705980,OK,
+6642022,DECLINE,
+11905756,DECLINE,
+9723473,OK,
+12847829,OK,
+9931375,DUPLICATED,
+12271070,OK,
+1447516,DECLINE,
+9788309,DUPLICATED,
+12930760,OK,
+8024501,DECLINE,
+12399782,OK,
+11705846,DECLINE,
+10587289,DUPLICATED,
+17459194,DECLINE,
+14532161,DUPLICATED,
+1902876,DECLINE,
+9021798,DUPLICATED,
+14554710,OK,
+12963053,OK,
+7102090,OK,
+13035171,OK,
+13208175,OK,
+10101894,OK,
+13994897,OK,
+15021706,OK,
+11805242,DUPLICATED,
+15127710,OK,
+8504300,DECLINE,
+14450321,DUPLICATED,
+5789988,DECLINE,
+15023078,OK,
+12718850,OK,
+14091197,OK,
+11805914,DUPLICATED,
+13113683,OK,
+14562149,DECLINE,
+12558513,OK,
+15127986,OK,
+15147744,OK,
+11705352,DUPLICATED,
+15149348,OK,
+14394061,OK,
+15147781,OK,
+15149262,OK,
+97543145,DECLINE,
+15149391,OK,
+12191057,OK,
+10587260,OK,
+9788309,DUPLICATED,
+8823743,OK,
+13035068,OK,
+10164741,DECLINE,
+12847624,OK,
+10335982,DUPLICATED,
+12848061,OK,
+1658865,OK,
+1033601,DECLINE,
+12070770,DECLINE,
+14372969,DUPLICATED,
+10322835,OK,
+14394296,OK,
+4419366,OK,
+11705352,DUPLICATED,
+13208433,DUPLICATED,
+14760539,OK,
+15158330,OK,
+12004658,DECLINE,
+14373323,DUPLICATED,
+12961915,DECLINE,
+10414840,OK,
+13113296,DUPLICATED,
+14329776,OK,
+15129036,OK,

@@ -2,6 +2,7 @@ package pageObjects;
 
 import commons.Constants;
 import commons.IDRequested;
+import commons.ReadData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pageUIs.RequestsPageUIs;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,8 +22,9 @@ import java.util.List;
 public class RequestPO extends AbstractPage {
     WebDriver driver;
     String rootFolder = System.getProperty("user.dir");
-    String filePath = rootFolder + "/src/test/resources/ShipperID.csv";
+    String filePath = rootFolder + "/src/test/resources/WriteShipperID.csv";
     String requestID, statusChecked;
+    ReadData readDataClass = new ReadData();
 
 
     public RequestPO(WebDriver driver) {
@@ -99,13 +103,11 @@ public class RequestPO extends AbstractPage {
         sleepInSecond(1);
     }
 
-    public void
-    listAndCheckIDRequested() {
+    public void listAndCheckIDRequested() {
         List<WebElement> allID = driver.findElements(By.xpath(RequestsPageUIs.LIST_ID_INPUTTED));
         for (WebElement id : allID) {
             scrollToElement(id);
             requestID = id.getText();
-            writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
             System.out.println(requestID);
             int idSize = requestID.length();
             if (!Character.isDigit(requestID.charAt(requestID.length() - 1))) {
@@ -114,11 +116,11 @@ public class RequestPO extends AbstractPage {
                 System.out.println("-----------------------------------------------------------------");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-            } else if (idSize > 8) {
-                System.out.println("-----------------------------------------------------------------");
-                System.out.println("WARNING: ID " + requestID + " is > 8 characters");
-                System.out.println("-----------------------------------------------------------------");
-                writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
+//            } else if (idSize > 8) {
+//                System.out.println("-----------------------------------------------------------------");
+//                System.out.println("WARNING: ID " + requestID + " is > 8 characters");
+//                System.out.println("-----------------------------------------------------------------");
+//                writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
             } else if (idSize > 12) {
                 System.out.println("-----------------------------------------------------------------");
                 System.out.println("Decline ID: " + requestID + " due to > 12 characters");
@@ -137,6 +139,8 @@ public class RequestPO extends AbstractPage {
                 System.out.println("-----------------------------------------------------------------");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
+            } else {
+                writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
             }
         }
 //        System.out.println("=================================================================");
@@ -147,37 +151,70 @@ public class RequestPO extends AbstractPage {
         action.keyDown(Keys.END).keyUp(Keys.END).perform();
     }
 
+    public void clickToAcceptID(String acceptID) {
+        waitToElementClickable(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, acceptID);
+        clickToElementByJS(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, acceptID);
+    }
+
+    public void clickToDeclineID(String declineID) {
+        waitToElementClickable(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, declineID);
+        clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, declineID);
+    }
+
     public void readAndHandleData(List<String> id) {
-        for (String requestID : id) {
-            Constants.REQUEST_ID = id.get(0);
-            Constants.STATUS = id.get(1);
-            driver.get(Constants.URL);
-            scrollToElement(RequestsPageUIs.REQUESTS_TEXT);
-            if (Constants.STATUS.equals("OK")) {
-                if (isElementPresentInDOM(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID)) {
-                    scrollToElement(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
-                    sleepInSecond(1);
-                    waitToElementClickable(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
-                    clickToElement(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
-                    System.out.println("---- Approve ID: " + Constants.REQUEST_ID);
-                } else {
-                    System.out.println("---- The ID " + Constants.REQUEST_ID + " is not presented ----          ||");
-                }
-            } else if (Constants.STATUS.equals("DECLINE") || Constants.STATUS.equals("DUPLICATED")) {
-                if (isElementPresentInDOM(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID)) {
-                    scrollToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
-                    sleepInSecond(1);
-                    waitToElementClickable(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
-                    clickToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
-                    System.out.println("---- Decline ID: " + Constants.REQUEST_ID);
-                } else {
-                    System.out.println("---- The ID " + Constants.REQUEST_ID + " is not presented ----          ||");
-                }
+        Constants.REQUEST_ID = id.get(0);
+        Constants.STATUS = id.get(1);
+//        driver.get(Constants.URL);
+//        scrollToElement(RequestsPageUIs.REQUESTS_TEXT);
+        if (Constants.STATUS.equals("OK")) {
+            if (isElementPresentInDOM(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID)) {
+                scrollToElement(RequestsPageUIs.APPROVE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
+//                sleepInSecond(1);
+                clickToAcceptID(Constants.REQUEST_ID);
+                System.out.println("---- Approve ID: " + Constants.REQUEST_ID);
+            } else {
+                System.out.println("---- The ID " + Constants.REQUEST_ID + " is not presented ----          ||");
+            }
+        } else if (Constants.STATUS.equals("DECLINE") || Constants.STATUS.equals("DUPLICATED")) {
+            if (isElementPresentInDOM(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID)) {
+                scrollToElement(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, Constants.REQUEST_ID);
+                sleepInSecond(1);
+                clickToDeclineID(Constants.REQUEST_ID);
+                System.out.println("---- Decline ID: " + Constants.REQUEST_ID);
+            } else {
+                System.out.println("---- The ID " + Constants.REQUEST_ID + " is not presented ----          ||");
             }
         }
     }
 
-    public void writeDataToCsv(String idRequest, String status){
+    public void readAndHandleRequestID() {
+        BufferedReader reader = null;
+        try {
+            String line;
+            reader = new BufferedReader(new FileReader(Constants.FILE_PATH));
+
+            System.out.println("======================================================");
+            //Read file in java line by line
+            while ((line = reader.readLine()) != null) {
+                while ((line = reader.readLine()) != null) {
+                    readAndHandleData(readDataClass.parseCsvLine(line));
+                }
+            }
+            System.out.println("======================================================");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null)
+                    reader.close();
+            } catch (IOException crunchifyException) {
+                crunchifyException.printStackTrace();
+            }
+        }
+    }
+
+
+    public void writeDataToCsv(String idRequest, String status) {
         //Create new data object
         IDRequested data = new IDRequested(idRequest, status);
 
@@ -185,22 +222,22 @@ public class RequestPO extends AbstractPage {
         idRequestList.add(data);
 
         FileWriter fileWriter = null;
-        try{
+        try {
             fileWriter = new FileWriter(filePath, true);
-            for (IDRequested id : idRequestList){
+            for (IDRequested id : idRequestList) {
                 fileWriter.append(id.getId());
                 fileWriter.append(Constants.COMMA_DELIMITER);
                 fileWriter.append(id.getStatus());
             }
             fileWriter.append(Constants.NEW_LINE_SEPARATOR);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error in CSVFileWriter");
             e.printStackTrace();
         } finally {
-            try{
+            try {
                 fileWriter.flush();
                 fileWriter.close();
-            } catch (IOException e){
+            } catch (IOException e) {
                 System.out.println("Error while flushing/closing fileWriter");
                 e.printStackTrace();
             }

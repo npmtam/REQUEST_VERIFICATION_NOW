@@ -13,7 +13,7 @@ public class Constants {
     public static final String PASSWORD = "Hellomai";
 
 
-    public static final String FILE_PATH =  rootFolder + "\\src\\main\\resources\\" + fileName;
+    public static final String FILE_PATH =  rootFolder + "\\src\\test\\resources\\" + fileName;
     public static final String COMMA_DELIMITER = ",";
     public static final String NEW_LINE_SEPARATOR = "\n";
 
