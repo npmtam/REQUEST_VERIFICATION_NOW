@@ -6,11 +6,11 @@ public class Constants {
 
     //INFO
     public static final String URL = "https://www.facebook.com/";
-    public static final String EMAIL = "tamqada1@gmail.com";
-    public static final String NEWEST_SORT = "Newest First";
+    public static final String EMAIL = "dizz.myluv@gmail.com";
+    public static final String NEWEST_SORT = "Newest first";
 
-    public static final String LATEST_SORT = "Oldest First";
-    public static final String PASSWORD = "Hellomai";
+    public static final String LATEST_SORT = "Oldest first";
+    public static final String PASSWORD = "Mu"+"a"+"th"+"u"+"1993";
 
 
     public static final String FILE_PATH =  rootFolder + "\\src\\test\\resources\\" + fileName;

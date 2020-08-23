@@ -44,12 +44,13 @@ public class HomePO extends AbstractPage {
 	}
 
 	public boolean isLoginSuccessfully(){
-		waitToElementClickable(HomePageUIs.HOME_TITLE);
-		return isElementDisplayed(HomePageUIs.HOME_TITLE);
+		waitToElementClickable(HomePageUIs.ACCOUNT_BUTTON);
+		return isElementDisplayed(HomePageUIs.ACCOUNT_BUTTON);
 	}
 
 	public boolean isGroupAcessed(String groupID){
 		String currentURL = driver.getCurrentUrl();
 		return currentURL.contains(groupID);
 	}
+
 }

@@ -4,8 +4,9 @@
 
 	<test name="RUN ON CHROME UI">
 		<parameter name="browser" value="chrome" />
+		<parameter name="isThereCSVFile" value="true" />
 		<classes>
-			<class name="facebook.nowgroup.Request_verification_now" />
+			<class name="facebook.nowgroup.Verify_ShipperID" />
 		</classes>
 	</test>
 

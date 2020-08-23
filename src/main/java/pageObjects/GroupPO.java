@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.AbstractPage;
 import pageUIs.GroupPageUIs;
+import pageUIs.RequestsPageUIs;
 
 public class GroupPO extends AbstractPage{
 	WebDriver driver;
@@ -28,9 +29,7 @@ public class GroupPO extends AbstractPage{
 	}
 
 	public boolean isRequestPageAccessed(){
-		sleepInSecond(2);
-		String currentUrl = driver.getCurrentUrl();
-		return currentUrl.contains("822546994752924/requests");
+		return isElementDisplayed(RequestsPageUIs.REQUESTS_TEXT);
 	}
 
 }

@@ -10,10 +10,6 @@ import pageUIs.AbstractPageUI;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-//import pageObjects.FooterShoppingCartPO;
-//import pageObjects.MyAccountPO;
-//import pageObjects.WishListPO;
-
 public class AbstractPage {
 	WebDriver driver;
 	WebElement element;
