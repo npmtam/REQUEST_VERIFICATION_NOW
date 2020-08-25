@@ -1,7 +1,6 @@
 package facebook.nowgroup;
 
 import commons.*;
-import org.apache.poi.ddf.EscherColorRef;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -64,10 +63,8 @@ public class Verify_ShipperID extends AbstractTest {
     public void TC02_AccessRequestPage() {
         log.info("Step 04: Access request Page");
         groupPage = PageGeneratorManager.getGroupPage(driver);
-        groupPage.clickToGroupManagementLink();
-        groupPage.clickToRequestLink();
-
-        groupPage.sleepInSecond(3);
+//        groupPage.clickToGroupManagementLink();
+        groupPage.clickToMemberRequestsLink();
 
         log.info("Step 05: Verify access request page successfully");
         verifyTrue(groupPage.isRequestPageAccessed());
@@ -78,27 +75,28 @@ public class Verify_ShipperID extends AbstractTest {
         log.info("Step 06: Select filter: Request didn't answer the question");
         requestPage = PageGeneratorManager.getRequestPage(driver);
         requestPage.clickToQuestionFilter();
-        abstractPage.sleepInSecond(1);
         requestPage.clickToNoAnswerQuestionFilter();
 
         log.info("Step 07: Count the number of request not answer");
         numberRequestNotAnswer = requestPage.getNumberOfRequestNotAnswer();
         System.out.println("There are " + numberRequestNotAnswer + " requests that not answer the question");
 
+        requestPage.sleepInSecond(2);
+
         log.info("Step 08: Remove all request didn't answer");
         requestPage.clickToDeclineAllRequest();
         requestPage.clickToConfirmButton();
 
-        log.info("Step 09: Verify declined didn't answer request");
-        verifyTrue(requestPage.isRequestEquals(0));
+        log.info("Step 09: Verify no requests without answered remaining");
+        verifyTrue(requestPage.isThereTheResult());
 
         log.info("Step 10: Remove filter");
         requestPage.clickToRemoveFilter();
 
-        System.out.println("Rejected " + numberRequestNotAnswer + " that not answer the question");
+        System.out.println("Rejected " + numberRequestNotAnswer + " request(s) that not answer the question");
     }
 
-    @Test
+//    @Test
     public void TC04_SortAndReadData() {
         log.info("Step 11: Select filter by oldest first");
         requestPage.selectSortSubOptions(Constants.LATEST_SORT);

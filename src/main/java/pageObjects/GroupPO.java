@@ -23,13 +23,13 @@ public class GroupPO extends AbstractPage{
 		clickToElement(GroupPageUIs.MANAGEMENT_LINK);
 	}
 
-	public void clickToRequestLink(){
+	public void clickToMemberRequestsLink(){
 		waitToElementClickable(GroupPageUIs.REQUEST_SECTION_LINK);
 		clickToElement(GroupPageUIs.REQUEST_SECTION_LINK);
 	}
 
 	public boolean isRequestPageAccessed(){
-		return isElementDisplayed(RequestsPageUIs.REQUESTS_TEXT);
+		return isElementDisplayed(RequestsPageUIs.QUESTION_FILTER_BUTTON);
 	}
 
 }

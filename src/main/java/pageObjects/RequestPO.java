@@ -40,15 +40,17 @@ public class RequestPO extends AbstractPage {
     public void clickToNoAnswerQuestionFilter() {
         waitToElementVisible(RequestsPageUIs.DIDNT_ANSWER_THE_QUESTION_OPTION_LINK);
         clickToElement(RequestsPageUIs.DIDNT_ANSWER_THE_QUESTION_OPTION_LINK);
+        waitToElementVisible(RequestsPageUIs.CLEAR_FILTER_DIDNT_ANSWER_QUESTION);
+    }
+
+    public boolean isThereTheResult() {
+        return isElementPresentInDOM(RequestsPageUIs.NO_RESULT);
     }
 
     public void clickToDeclineAllRequest() {
-        String text = getNumberOfRequestNotAnswer();
-        if (!text.startsWith("0")) {
-            if (isElementPresentInDOM(RequestsPageUIs.DECLINE_ALL)) {
-                waitToElementClickable(RequestsPageUIs.DECLINE_ALL);
-                clickToElement(RequestsPageUIs.DECLINE_ALL);
-            }
+        if (isElementPresentInDOM(RequestsPageUIs.DECLINE_ALL)) {
+            waitToElementClickable(RequestsPageUIs.DECLINE_ALL);
+            clickToElement(RequestsPageUIs.DECLINE_ALL);
         } else {
             System.out.println("There's no request without answer");
         }
@@ -62,21 +64,19 @@ public class RequestPO extends AbstractPage {
     }
 
     public String getNumberOfRequestNotAnswer() {
+        String countRequest;
         if (isElementPresentInDOM(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL)) {
-            String countRequestLabel = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL);
-            String numberOfRequest = countRequestLabel.substring(0, 3);
-            return numberOfRequest;
+            countRequest = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL);
         } else {
-            String countRequestLabel = getTextElement(RequestsPageUIs.NUMBER_OF_MEMBER_DIDNOT_ANSWER_LABEL_BACKUP);
-            String numberOfRequest = countRequestLabel.substring(0, 3);
-            return numberOfRequest;
+            System.out.println("There's no request without answered");
+            countRequest = "0";
         }
-
+        return countRequest;
     }
 
     public void clickToRemoveFilter() {
-        waitToElementVisible(RequestsPageUIs.REMOVE_FILTER_LINK);
-        clickToElement(RequestsPageUIs.REMOVE_FILTER_LINK);
+        waitToElementVisible(RequestsPageUIs.CLEAR_FILTER_DIDNT_ANSWER_QUESTION);
+        clickToElement(RequestsPageUIs.CLEAR_FILTER_DIDNT_ANSWER_QUESTION);
     }
 
     public boolean isRequestEquals(int expectedResult) {
@@ -99,7 +99,7 @@ public class RequestPO extends AbstractPage {
     public void scrollToLoadID() {
         scrollToLoadMore();
         sleepInSecond(3);
-        scrollToElement(RequestsPageUIs.REQUESTS_TEXT);
+        scrollToElement(RequestsPageUIs.MATCHING_REQUESTS_TEXT);
         sleepInSecond(1);
     }
 
