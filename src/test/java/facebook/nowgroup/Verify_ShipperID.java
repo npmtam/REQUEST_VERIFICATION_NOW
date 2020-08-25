@@ -20,18 +20,24 @@ public class Verify_ShipperID extends AbstractTest {
     private ReadData readData;
     private RequestPO requestPage;
 
-    String numberRequestNotAnswer, isThereCSVFile;
-    String password = encryptData(Constants.PASSWORD);
-    String getPasswordDecrypted = getDecryptedText(password);
+    String numberRequestNotAnswer, isThereCSVFile, password, getPasswordDecrypted;
 
     @Parameters({"browser", "isThereCSVFile"})
     @BeforeTest
     public void beforeTest(String browserName, String isThereCSVFile) {
+        log.info("Pre-condition: init data");
+        isThereCSVFile = this.isThereCSVFile;
         driver = getBrowserDriver(browserName);
         driver.get(Constants.URL);
         abstractPage = new AbstractPage(driver);
         readData = new ReadData();
-        isThereCSVFile = this.isThereCSVFile;
+
+        log.info("Pre-condition: Get account information from file");
+        readData.readAccountInfo(Constants.ACCOUNT_FILE);
+
+        log.info("Pre-condition: Encrypt and decrypt password");
+        password = encryptData(Constants.PASSWORD);
+        getPasswordDecrypted = getDecryptedText(password);
 
         log.info("Pre-condition: Login");
         homePage = PageGeneratorManager.getHomePage(driver);
@@ -56,7 +62,7 @@ public class Verify_ShipperID extends AbstractTest {
         abstractPage.sleepInSecond(2);
 
         log.info("Step 03: Verify access Group successfully");
-        verifyTrue(homePage.isGroupAcessed("822546994752924"));
+        verifyTrue(homePage.isGroupAcessed(Constants.GROUP_ID));
     }
 
     @Test
