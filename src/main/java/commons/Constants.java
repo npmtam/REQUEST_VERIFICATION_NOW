@@ -24,5 +24,13 @@ public class Constants {
     public static final String DECLINE = "DECLINE";
     public static final String NEED_CONFIRMATION = "Need Confirmation";
 
+    //SQL
+    public static final String HOST_NAME = "localhost";
+    public static final String INSTANCE_NAME = "SQLEXPRESS";
+    public static final String DATABASE = "REQUEST_VERIFICATION_NOW";
+    public static final String DB_USERNAME = "sa";
+    public static final String DB_PASSWORD = "sa";
+    public static String REQUEST_STATUS = null;
+    public static boolean isTheIDExisted;
 
 }

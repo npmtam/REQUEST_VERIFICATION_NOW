@@ -20,10 +20,11 @@ public class RequestsPageUIs {
     public static final String SORT_DROPDOWN_LINK = "//span[text()='Suggested' and @class='_55pe']/parent::a";
     public static final String SORT_SUBOPTIONS_LINK = "//span[text()='%s' and @class='_54nh']";
     public static final String OLDEST_OPTIONS_SELECTED = "//div[@class='uiPopover _6a']//span[@class='_55pe' and text()='Oldest first']";
+    public static final String SORT_OPTIONS = "//span[text()='Suggested']";
 
     //List ID
-    public static final String LIST_ID_INPUTTED = "//text[@truncate='200']";
-    public static final String DECLINE_BUTTON_FOR_EACH_ID = "//text[contains(text(), '%s')]/ancestor::div[@class='_42ef']//button[@name='approve']";
-    public static final String APPROVE_BUTTON_FOR_EACH_ID = "//text[contains(text(), '%s')]/ancestor::div[@class='_42ef']//button[@name='decline']";
-    public static final String MATCHING_REQUESTS_TEXT = "//span[text()=' Matching Request']";
+    public static final String LIST_ID_INPUTTED = "//Span[contains(text(), 'Vui l')]/following-sibling::div/span";
+    public static final String DECLINE_BUTTON_FOR_EACH_ID = "//span[text()='%s']/ancestor::div[@class='orn4t191']/preceding-sibling::div//div[@aria-label='Decline']";
+    public static final String APPROVE_BUTTON_FOR_EACH_ID = "//span[text()='%s']/ancestor::div[@class='orn4t191']/preceding-sibling::div//div[@aria-label='Approve']";
+    public static final String MATCHING_REQUESTS_TEXT = "//span[text()='Matching Requests']";
 }

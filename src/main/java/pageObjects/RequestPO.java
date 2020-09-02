@@ -1,13 +1,10 @@
 package pageObjects;
 
-import commons.Constants;
-import commons.IDRequested;
-import commons.ReadData;
+import commons.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import commons.AbstractPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pageUIs.RequestsPageUIs;
@@ -16,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +23,7 @@ public class RequestPO extends AbstractPage {
     String filePath = rootFolder + "/src/test/resources/WriteShipperID.csv";
     String requestID, statusChecked;
     ReadData readDataClass = new ReadData();
+    ConnectDB connectDB = new ConnectDB();
 
 
     public RequestPO(WebDriver driver) {
@@ -116,11 +115,6 @@ public class RequestPO extends AbstractPage {
                 System.out.println("-----------------------------------------------------------------");
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
-//            } else if (idSize > 8) {
-//                System.out.println("-----------------------------------------------------------------");
-//                System.out.println("WARNING: ID " + requestID + " is > 8 characters");
-//                System.out.println("-----------------------------------------------------------------");
-//                writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
             } else if (idSize > 12) {
                 System.out.println("-----------------------------------------------------------------");
                 System.out.println("Decline ID: " + requestID + " due to > 12 characters");
@@ -140,10 +134,23 @@ public class RequestPO extends AbstractPage {
                 waitToElementVisible(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
                 clickToElementByJS(RequestsPageUIs.DECLINE_BUTTON_FOR_EACH_ID, requestID);
             } else {
-                writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
+//                writeDataToCsv(requestID, Constants.NEED_CONFIRMATION);
+                try {
+                    connectDB.selectIDFromDB(requestID);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("ID existed: " + Constants.isTheIDExisted);
+                insertIDToDB(requestID, Constants.REQUEST_STATUS);
             }
         }
-//        System.out.println("=================================================================");
+    }
+
+
+    public void insertIDToDB(String id, String requestStatus){
+        connectDB.insertRecordToDB(id, requestStatus);
     }
 
     public void pressEndKeyboard() {

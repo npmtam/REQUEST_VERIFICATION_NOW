@@ -102,25 +102,26 @@ public class Verify_ShipperID extends AbstractTest {
         System.out.println("Rejected " + numberRequestNotAnswer + " request(s) that not answer the question");
     }
 
-//    @Test
+    @Test
     public void TC04_SortAndReadData() {
-        log.info("Step 11: Select filter by oldest first");
-        requestPage.selectSortSubOptions(Constants.LATEST_SORT);
+//        log.info("Step 11: Select filter by oldest first");
+//        requestPage.selectSortSubOptions(Constants.LATEST_SORT);
 
-        log.info("Step 12: Verify the oldest was selected");
-        requestPage.isOldestSortWasSelected();
+//        log.info("Step 12: Verify the oldest was selected");
+//        requestPage.isOldestSortWasSelected();
 
-        log.info("Step 13: Scroll to load full requests");
+        log.info("Step 11: Scroll to load full requests");
         requestPage.scrollToLoadID();
 
-        log.info("Step 13: Read data and verify depends on settings");
-        if (isThereCSVFile.equals("true")) {
-            requestPage.readAndHandleRequestID();
-        } else {
-            System.out.println("Did not read data and handle requests");
-        }
+//        log.info("Step 12: Read data and verify depends on settings");
+//        if (isThereCSVFile.equals("true")) {
+//            requestPage.readAndHandleRequestID();
+//        } else {
+//            System.out.println("Did not read data and handle requests");
+//        }
 
-        log.info("Step 14: Check conditions and print ID requested");
+
+        log.info("Step 13: Check conditions and print ID requested");
         requestPage.listAndCheckIDRequested();
     }
 

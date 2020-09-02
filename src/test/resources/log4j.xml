@@ -25,7 +25,7 @@
 		</layout>
 	</appender>
 
-	<category name="com.nopcommerce.frontend">
+	<category name="facebook.nowgroup">
 		<priority value="all" />
 		<appender-ref ref="console" />
 		<appender-ref ref="logfile" />
