@@ -45,7 +45,7 @@ public class ConnectDB {
         System.out.println("Done");
     }
 
-    public void insertRecordToDB(String id, String requestStatus) {
+    public void insertRecordToDB(String id, String requestStatus, String comment) {
         Connection conn = getSQLServerConnection();
 
         Statement stmt = null;
@@ -54,9 +54,9 @@ public class ConnectDB {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        String insertQuery = "INSERT INTO REQUESTID (RequestID, RequestStatus)" +
+        String insertQuery = "INSERT INTO REQUESTID (RequestID, RequestStatus, Comments)" +
 //                " OUTPUT inserted.id" +
-                " VALUES ('" + id + "', '" + requestStatus + "')";
+                " VALUES ('" + id + "', '" + requestStatus + "', '" + comment + "')";
 
         System.out.println(insertQuery);
         try {

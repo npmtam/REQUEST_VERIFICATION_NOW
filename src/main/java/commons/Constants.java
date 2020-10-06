@@ -31,6 +31,12 @@ public class Constants {
     public static final String DB_USERNAME = "sa";
     public static final String DB_PASSWORD = "sa";
     public static String REQUEST_STATUS = null;
+    public static String COMMENTS = "";
     public static boolean isTheIDExisted;
+
+    //SPREADSHEET
+    public static final String SPREADSHEET_ID = "1bc_wS_DWx-0LUfQmZeKvvq_19dwxCEmvgg9qis8tPmc";
+    public static final String CREDENTIAL_FILE_PATH = "/credentials.json";
+    public static final String RANGE = "A:C";
 
 }

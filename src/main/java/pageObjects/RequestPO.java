@@ -24,6 +24,7 @@ public class RequestPO extends AbstractPage {
     String requestID, statusChecked;
     ReadData readDataClass = new ReadData();
     ConnectDB connectDB = new ConnectDB();
+    SpreadSheetInteraction spreadSheet = new SpreadSheetInteraction();
 
 
     public RequestPO(WebDriver driver) {
@@ -56,8 +57,8 @@ public class RequestPO extends AbstractPage {
     }
 
     public void clickToConfirmButton() {
-        if (isElementPresentInDOM(RequestsPageUIs.CONFIRM_BUTTON_AT_CONFIRMATION_POPUP)) {
-            waitToElementClickable(RequestsPageUIs.CONFIRM_BUTTON_AT_CONFIRMATION_POPUP);
+        if (isElementDisplayed(RequestsPageUIs.CONFIRM_BUTTON_AT_CONFIRMATION_POPUP)) {
+//            waitToElementClickable(RequestsPageUIs.CONFIRM_BUTTON_AT_CONFIRMATION_POPUP);
             clickToElement(RequestsPageUIs.CONFIRM_BUTTON_AT_CONFIRMATION_POPUP);
         }
     }
@@ -142,16 +143,12 @@ public class RequestPO extends AbstractPage {
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-                System.out.println("ID existed: " + Constants.isTheIDExisted);
-                insertIDToDB(requestID, Constants.REQUEST_STATUS);
+                connectDB.insertRecordToDB(requestID, Constants.REQUEST_STATUS, Constants.COMMENTS);
+                spreadSheet.appendDataToSpreadSheet(requestID, Constants.REQUEST_STATUS, Constants.COMMENTS);
             }
         }
     }
 
-
-    public void insertIDToDB(String id, String requestStatus){
-        connectDB.insertRecordToDB(id, requestStatus);
-    }
 
     public void pressEndKeyboard() {
         Actions action = new Actions(driver);
